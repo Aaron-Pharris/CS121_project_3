@@ -14,8 +14,21 @@ int main(){
     int horses[5] = {0,0,0,0,0};
     bool keepGoing = true;
     //test advance() and printLane()
-    advance(3, horses);
-    printLane(3, horses);
+    //advance(3, horses);
+    //printLane(3, horses);
+    while (keepGoing){
+        for (int i = 0; i < 5; i++){
+            advance(i, horses);
+	}
+	for (int j = 0; j < 5; j++){
+	    printLane(j, horses);
+	    if (isWinner(j, horses)){
+	        keepGoing = false;
+		cout << "Horse " << j << " wins" <<endl;
+	    }
+	}
+	cin.get();
+    }
 }
 
 void advance(int horseNum, int* horses){
@@ -36,3 +49,13 @@ void printLane(int horseNum, int* horses){
     }
     cout << endl;
 }
+
+bool isWinner(int horseNum, int* horses){
+    if (horses[horseNum] == 14){
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
